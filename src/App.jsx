@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import ImageCard from "./components/ImageCard";
+import "./styles/ImageCard.css";
 
 export default function App() {
   const [memoryCardData, setMemoryCardData] = useState([]);
@@ -27,10 +29,7 @@ export default function App() {
   return (
     <>
       {memoryCardData.map((entry) => (
-        <div>
-          <img src={entry.image}></img>
-          <div>{entry.name}</div>
-        </div>
+        <ImageCard imageUrl={entry.image} title={entry.name} />
       ))}
     </>
   );
