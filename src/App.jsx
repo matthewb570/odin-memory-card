@@ -29,7 +29,7 @@ export default function App() {
   return (
     <>
       {memoryCardData.map((entry) => (
-        <ImageCard imageUrl={entry.image} title={entry.name} />
+        <ImageCard key={entry.name} imageUrl={entry.image} title={entry.name} />
       ))}
     </>
   );
