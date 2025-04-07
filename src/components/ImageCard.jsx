@@ -1,10 +1,12 @@
+import StringUtils from "../utils/StringUtils";
+
 export default function ImageCard({ imageUrl, title }) {
   return (
     <div className="image-card">
       <div className="zoom-image">
-        <img class="image" src={imageUrl}></img>
+        <img className="image" src={imageUrl}></img>
       </div>
-      <h3 className="title">{title}</h3>
+      <h3 className="title">{StringUtils.convertToTitleCase(title)}</h3>
     </div>
   );
 }
