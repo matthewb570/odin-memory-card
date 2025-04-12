@@ -20,7 +20,9 @@ export default function App() {
         const responseJson = await response.json();
         setMemoryCardData(responseJson.data);
         setMemoryCardsToDisplay(
-          ArrayUtils.getRandomElementsFromArray(responseJson.data, 12),
+          ArrayUtils.getRandomElementsFromArray(responseJson.data, 12).map(
+            (element) => new MemoryCard(element.name, element.image),
+          ),
         );
       }
     }
@@ -38,4 +40,16 @@ export default function App() {
       setMemoryCardsToDisplay={setMemoryCardsToDisplay}
     />
   );
+}
+
+class MemoryCard {
+  name;
+  imageUrl;
+  isClicked;
+
+  constructor(name, imageUrl) {
+    this.name = name;
+    this.imageUrl = imageUrl;
+    this.isClicked = false;
+  }
 }

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ArrayUtils from "../utils/ArrayUtils";
 import ImageCard from "./ImageCard";
 
@@ -5,19 +6,28 @@ export default function Game({
   memoryCardsToDisplay,
   setMemoryCardsToDisplay,
 }) {
-  function handleImageCardClick() {
-    setMemoryCardsToDisplay(ArrayUtils.shuffleArray(memoryCardsToDisplay));
+  const [isGameOver, setIsGameOver] = useState(false);
+
+  function handleImageCardClick(index) {
+    if (memoryCardsToDisplay[index].isClicked) {
+      setIsGameOver(true);
+    }
+
+    const newArray = [...memoryCardsToDisplay];
+    newArray[index].isClicked = true;
+    setMemoryCardsToDisplay(ArrayUtils.shuffleArray(newArray));
   }
 
   return (
     <div className="game">
+      {isGameOver && <div className="game-status">Game Over</div>}
       <div className="image-card-list">
-        {memoryCardsToDisplay.map((entry) => (
+        {memoryCardsToDisplay.map((memoryCard, index) => (
           <ImageCard
-            key={entry.name}
-            imageUrl={entry.image}
-            title={entry.name}
-            onClick={handleImageCardClick}
+            key={memoryCard.name}
+            imageUrl={memoryCard.imageUrl}
+            title={memoryCard.name}
+            onClick={() => handleImageCardClick(index)}
           />
         ))}
       </div>
