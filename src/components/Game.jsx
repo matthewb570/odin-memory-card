@@ -1,12 +1,13 @@
-import { useMemo } from "react";
 import ArrayUtils from "../utils/ArrayUtils";
 import ImageCard from "./ImageCard";
 
-export default function Game({ memoryCardData }) {
-  const memoryCardsToDisplay = useMemo(
-    () => ArrayUtils.getRandomElementsFromArray(memoryCardData, 12),
-    [memoryCardData],
-  );
+export default function Game({
+  memoryCardsToDisplay,
+  setMemoryCardsToDisplay,
+}) {
+  function handleImageCardClick() {
+    setMemoryCardsToDisplay(ArrayUtils.shuffleArray(memoryCardsToDisplay));
+  }
 
   return (
     <div className="game">
@@ -16,6 +17,7 @@ export default function Game({ memoryCardData }) {
             key={entry.name}
             imageUrl={entry.image}
             title={entry.name}
+            onClick={handleImageCardClick}
           />
         ))}
       </div>

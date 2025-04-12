@@ -21,4 +21,29 @@ export default class ArrayUtils {
 
     return randomElements;
   }
+
+  static shuffleArray(array) {
+    if (!Array.isArray(array)) {
+      return array;
+    }
+
+    if (array.length === 1) {
+      return [...array];
+    }
+
+    const newArray = [...array];
+
+    for (let i = 0; i < newArray.length; i++) {
+      const randomIndex = NumberUtils.getRandomIntegerInRange(
+        i,
+        newArray.length - 1,
+      );
+
+      const temp = newArray[i];
+      newArray[i] = newArray[randomIndex];
+      newArray[randomIndex] = temp;
+    }
+
+    return newArray;
+  }
 }
