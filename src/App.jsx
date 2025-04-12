@@ -1,16 +1,13 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import ImageCard from "./components/ImageCard";
 import "./styles/ImageCard.css";
+import "./styles/Game.css";
 import ArrayUtils from "./utils/ArrayUtils";
+import Game from "./components/Game";
 
 export default function App() {
   const [memoryCardData, setMemoryCardData] = useState([]);
-
-  const memoryCardsToDisplay = useMemo(
-    () => ArrayUtils.getRandomElementsFromArray(memoryCardData, 15),
-    [memoryCardData],
-  );
 
   useEffect(() => {
     let active = true;
@@ -32,11 +29,5 @@ export default function App() {
     };
   }, []);
 
-  return (
-    <>
-      {memoryCardsToDisplay.map((entry) => (
-        <ImageCard key={entry.name} imageUrl={entry.image} title={entry.name} />
-      ))}
-    </>
-  );
+  return <Game memoryCardData={memoryCardData} />;
 }
