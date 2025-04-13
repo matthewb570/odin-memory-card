@@ -70,10 +70,11 @@ export default function Game() {
 
   return (
     <div className="game">
+      <h1>Hyrule Memory Game</h1>
       {isGameOver && <div className="game-status">Game Over</div>}
       <div className="scores">
-        <div>{`Current Score: ${currentScore}`}</div>
         <div>{`High Score: ${highScore}`}</div>
+        <div>{`Current Score: ${currentScore}`}</div>
       </div>
       <GameBoard
         memoryCardsToDisplay={memoryCardsToDisplay}

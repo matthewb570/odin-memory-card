@@ -7,6 +7,7 @@
 
 .image-card .zoom-image {
   overflow: hidden;
+  position: relative;
 }
 
 .image-card .image {
@@ -29,10 +30,20 @@
   font-weight: normal;
 }
 
-.image-card.clicked {
-  border-color: red;
+.image-card.clicked .zoom-image:after,
+.image-card.not-clicked .zoom-image:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  height: 100%;
+  width: 100%;
 }
 
-.image-card.not-clicked {
-  border-color: limegreen;
+.image-card.clicked .zoom-image:after {
+  background: rgba(255, 0, 0, 0.5);
+}
+
+.image-card.not-clicked .zoom-image:after {
+  background: rgba(50, 205, 50, 0.5);
 }

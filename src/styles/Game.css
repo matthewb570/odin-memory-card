@@ -4,3 +4,18 @@
   justify-content: center;
   gap: 1rem;
 }
+
+.game > h1 {
+  font-weight: normal;
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.game .scores {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
