@@ -31,6 +31,10 @@ export default function Game() {
   }, []);
 
   function handleMemoryCardClick(index) {
+    if (isGameOver) {
+      return;
+    }
+
     if (memoryCardsToDisplay[index].isClicked) {
       endGame();
     } else {
