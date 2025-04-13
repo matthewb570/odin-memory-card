@@ -6,6 +6,8 @@ export default function Game() {
   const [memoryCardData, setMemoryCardData] = useState([]);
   const [memoryCardsToDisplay, setMemoryCardsToDisplay] = useState([]);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [currentScore, setCurrentScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
 
   useEffect(() => {
     let active = true;
@@ -32,22 +34,31 @@ export default function Game() {
     };
   }, []);
 
-  function handleImageCardClick(index) {
+  function handleMemoryCardClick(index) {
     if (memoryCardsToDisplay[index].isClicked) {
       setIsGameOver(true);
-    }
+      if (currentScore > highScore) {
+        setHighScore(currentScore);
+      }
+    } else {
+      setCurrentScore(currentScore + 1);
 
-    const newArray = [...memoryCardsToDisplay];
-    newArray[index].isClicked = true;
-    setMemoryCardsToDisplay(ArrayUtils.shuffleArray(newArray));
+      const newArray = [...memoryCardsToDisplay];
+      newArray[index].isClicked = true;
+      setMemoryCardsToDisplay(ArrayUtils.shuffleArray(newArray));
+    }
   }
 
   return (
     <div className="game">
       {isGameOver && <div className="game-status">Game Over</div>}
+      <div className="scores">
+        <div>{`Current Score: ${currentScore}`}</div>
+        <div>{`High Score: ${highScore}`}</div>
+      </div>
       <GameBoard
         memoryCardsToDisplay={memoryCardsToDisplay}
-        handleImageCardClick={handleImageCardClick}
+        handleMemoryCardClick={handleMemoryCardClick}
       />
     </div>
   );

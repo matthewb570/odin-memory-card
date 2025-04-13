@@ -2,7 +2,7 @@ import ImageCard from "./ImageCard";
 
 export default function GameBoard({
   memoryCardsToDisplay,
-  handleImageCardClick,
+  handleMemoryCardClick,
 }) {
   return (
     <div className="image-card-list">
@@ -11,7 +11,7 @@ export default function GameBoard({
           key={memoryCard.name}
           imageUrl={memoryCard.imageUrl}
           title={memoryCard.name}
-          onClick={() => handleImageCardClick(index)}
+          onClick={() => handleMemoryCardClick(index)}
         />
       ))}
     </div>
