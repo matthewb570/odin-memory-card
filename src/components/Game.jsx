@@ -36,9 +36,14 @@ export default function Game() {
     } else {
       setCurrentScore(currentScore + 1);
 
-      const newArray = [...memoryCardsToDisplay];
-      newArray[index].isClicked = true;
-      setMemoryCardsToDisplay(ArrayUtils.shuffleArray(newArray));
+      let newArray = [...memoryCardsToDisplay];
+
+      const clickedMemoryCard = newArray.splice(index, 1)[0];
+      clickedMemoryCard.isClicked = true;
+
+      newArray = ArrayUtils.shuffleArray(newArray);
+      newArray.splice(index, 0, clickedMemoryCard);
+      setMemoryCardsToDisplay(newArray);
     }
   }
 
