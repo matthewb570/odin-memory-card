@@ -53,6 +53,7 @@ export default function Game() {
 
   function startNewGame(memoryCardData) {
     setCurrentScore(0);
+    setIsGameOver(false);
     setMemoryCardsToDisplay(
       ArrayUtils.getRandomElementsFromArray(memoryCardData, 12).map(
         (element) => new MemoryCard(element.name, element.image),
@@ -77,6 +78,7 @@ export default function Game() {
       <GameBoard
         memoryCardsToDisplay={memoryCardsToDisplay}
         handleMemoryCardClick={handleMemoryCardClick}
+        isGameOver={isGameOver}
       />
       <button disabled={!isGameOver} onClick={handleNewGameClick}>
         New Game

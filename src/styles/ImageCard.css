@@ -28,3 +28,11 @@
   background-color: black;
   margin: 0;
 }
+
+.image-card.clicked {
+  border-color: red;
+}
+
+.image-card.not-clicked {
+  border-color: limegreen;
+}
