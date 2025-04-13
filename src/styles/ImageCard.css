@@ -1,7 +1,6 @@
 .image-card {
   width: fit-content;
   color: white;
-  font-size: 1.2rem;
   border: 2px solid white;
   border-radius: 7px;
   overflow: hidden;
@@ -31,6 +30,7 @@
   margin: 0;
   font-weight: normal;
   padding: 0.3rem 0;
+  font-size: 1.4rem;
 }
 
 .image-card.clicked .zoom-image:after,
