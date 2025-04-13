@@ -26,10 +26,14 @@
   margin-bottom: 1rem;
 }
 
-.game button {
+.game .button-list button {
   font: inherit;
   background-color: white;
   border: none;
   border-radius: 7px;
   padding: 0.5rem 2rem;
+}
+
+.game .button-list button:disabled {
+  cursor: default;
 }
