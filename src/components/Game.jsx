@@ -36,9 +36,10 @@ export default function Game() {
     }
 
     if (memoryCardsToDisplay[index].isClicked) {
-      endGame();
+      endGame(currentScore);
     } else {
-      setCurrentScore(currentScore + 1);
+      const newScore = currentScore + 1;
+      setCurrentScore(newScore);
 
       let newArray = [...memoryCardsToDisplay];
 
@@ -48,6 +49,10 @@ export default function Game() {
       newArray = ArrayUtils.shuffleArray(newArray);
       newArray.splice(index, 0, clickedMemoryCard);
       setMemoryCardsToDisplay(newArray);
+
+      if (newScore >= memoryCardsToDisplay.length) {
+        endGame(newScore);
+      }
     }
   }
 
@@ -65,7 +70,7 @@ export default function Game() {
     );
   }
 
-  function endGame() {
+  function endGame(currentScore) {
     setIsGameOver(true);
     if (currentScore > highScore) {
       setHighScore(currentScore);

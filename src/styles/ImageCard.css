@@ -44,9 +44,9 @@
 }
 
 .image-card.clicked .zoom-image:after {
-  background: rgba(255, 0, 0, 0.5);
+  background: rgba(50, 205, 50, 0.5);
 }
 
 .image-card.not-clicked .zoom-image:after {
-  background: rgba(50, 205, 50, 0.5);
+  background: rgba(255, 0, 0, 0.5);
 }
