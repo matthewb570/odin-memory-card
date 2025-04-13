@@ -2,7 +2,9 @@
   width: fit-content;
   color: white;
   font-size: 1.2rem;
-  border: 2px solid black;
+  border: 2px solid white;
+  border-radius: 7px;
+  overflow: hidden;
 }
 
 .image-card .zoom-image {

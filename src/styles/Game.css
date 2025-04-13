@@ -3,6 +3,7 @@
   grid-template-columns: auto auto auto auto auto auto;
   justify-content: center;
   gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .game > h1 {
@@ -18,4 +19,17 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
+}
+
+.game .button-list {
+  display: flex;
+  justify-content: center;
+}
+
+.game button {
+  font: inherit;
+  background-color: white;
+  border: none;
+  border-radius: 7px;
+  padding: 0.5rem 2rem;
 }
