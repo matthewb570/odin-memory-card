@@ -75,20 +75,21 @@ export default function Game() {
   return (
     <div className="game">
       <h1>Hyrule Memory Game</h1>
-      <div className="scores">
-        <div>{`High Score: ${highScore}`}</div>
-        <div>{`Current Score: ${currentScore}`}</div>
-      </div>
-      <GameBoard
-        memoryCardsToDisplay={memoryCardsToDisplay}
-        handleMemoryCardClick={handleMemoryCardClick}
-        isGameOver={isGameOver}
-      />
       <div className="button-list">
         <button disabled={!isGameOver} onClick={handleNewGameClick}>
           New Game
         </button>
       </div>
+      <div className="scores">
+        <div>{`High Score: ${highScore}`}</div>
+        <div>{`Current Score: ${currentScore}`}</div>
+      </div>
+
+      <GameBoard
+        memoryCardsToDisplay={memoryCardsToDisplay}
+        handleMemoryCardClick={handleMemoryCardClick}
+        isGameOver={isGameOver}
+      />
     </div>
   );
 }

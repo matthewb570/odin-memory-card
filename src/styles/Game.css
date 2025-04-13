@@ -1,9 +1,8 @@
 .image-card-list {
-  display: grid;
-  grid-template-columns: auto auto auto auto auto auto;
+  display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 1rem;
 }
 
 .game > h1 {
@@ -24,6 +23,7 @@
 .game .button-list {
   display: flex;
   justify-content: center;
+  margin-bottom: 1rem;
 }
 
 .game button {

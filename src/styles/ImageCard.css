@@ -30,6 +30,7 @@
   background-color: black;
   margin: 0;
   font-weight: normal;
+  padding: 0.3rem 0;
 }
 
 .image-card.clicked .zoom-image:after,
