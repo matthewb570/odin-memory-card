@@ -19,11 +19,7 @@ export default function Game() {
       if (response.ok && active) {
         const responseJson = await response.json();
         setMemoryCardData(responseJson.data);
-        setMemoryCardsToDisplay(
-          ArrayUtils.getRandomElementsFromArray(responseJson.data, 12).map(
-            (element) => new MemoryCard(element.name, element.image),
-          ),
-        );
+        startNewGame(responseJson.data);
       }
     }
 
@@ -36,16 +32,33 @@ export default function Game() {
 
   function handleMemoryCardClick(index) {
     if (memoryCardsToDisplay[index].isClicked) {
-      setIsGameOver(true);
-      if (currentScore > highScore) {
-        setHighScore(currentScore);
-      }
+      endGame();
     } else {
       setCurrentScore(currentScore + 1);
 
       const newArray = [...memoryCardsToDisplay];
       newArray[index].isClicked = true;
       setMemoryCardsToDisplay(ArrayUtils.shuffleArray(newArray));
+    }
+  }
+
+  function handleNewGameClick() {
+    startNewGame(memoryCardData);
+  }
+
+  function startNewGame(memoryCardData) {
+    setCurrentScore(0);
+    setMemoryCardsToDisplay(
+      ArrayUtils.getRandomElementsFromArray(memoryCardData, 12).map(
+        (element) => new MemoryCard(element.name, element.image),
+      ),
+    );
+  }
+
+  function endGame() {
+    setIsGameOver(true);
+    if (currentScore > highScore) {
+      setHighScore(currentScore);
     }
   }
 
@@ -60,6 +73,9 @@ export default function Game() {
         memoryCardsToDisplay={memoryCardsToDisplay}
         handleMemoryCardClick={handleMemoryCardClick}
       />
+      <button disabled={!isGameOver} onClick={handleNewGameClick}>
+        New Game
+      </button>
     </div>
   );
 }
