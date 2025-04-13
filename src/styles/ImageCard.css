@@ -2,7 +2,6 @@
   width: fit-content;
   color: white;
   font-size: 1.3rem;
-  font-weight: 700;
   border: 2px solid black;
 }
 
@@ -27,6 +26,7 @@
 
   background-color: black;
   margin: 0;
+  font-weight: normal;
 }
 
 .image-card.clicked {
